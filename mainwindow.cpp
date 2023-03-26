@@ -5,6 +5,7 @@
 #include "protocols/ethernet.h"
 #include "protocols/icmp.h"
 #include "protocols/ipv4.h"
+#include "protocols/udp.h"
 #include "xdppass.h"
 #include <net/if.h>
 #include <qscrollbar.h>
@@ -94,6 +95,8 @@ void MainWindow::setPktInfo(struct packet_info *pkt_info){
     ui->tableWidget->setItem(row,3,new QTableWidgetItem("IPV4"));
   else if(protocolType== typeid(Icmp))
     ui->tableWidget->setItem(row, 3, new QTableWidgetItem("ICMP"));
+  else if(protocolType== typeid(Udp))
+    ui->tableWidget->setItem(row, 3, new QTableWidgetItem("UDP"));
   else
     ui->tableWidget->setItem(row,3,new QTableWidgetItem("UNKNOWN"));
   ui->tableWidget->setItem(row,5,new QTableWidgetItem(newPkg->lastProtocol->infoPrint()));

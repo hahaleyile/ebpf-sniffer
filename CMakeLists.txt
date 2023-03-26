@@ -36,6 +36,8 @@ set(PROJECT_SOURCES
         protocols/ipv4.cpp
         protocols/icmp.h
         protocols/icmp.cpp
+        protocols/udp.h
+        protocols/udp.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

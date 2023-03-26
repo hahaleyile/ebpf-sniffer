@@ -3,6 +3,7 @@
 #include "protocols/icmp.h"
 #include "protocols/ipv4.h"
 #include "protocols/padding.h"
+#include "protocols/udp.h"
 #include "protocols/unknown.h"
 #include "protocols/arp.h"
 #include <linux/types.h>
@@ -65,6 +66,12 @@ Package::Package(struct packet_info *pkt_info) : len(pkt_info->len) {
           case IpTypes::ICMP:
             protocols.append(new Icmp(pkt_info->data + 14 + l, remainSize));
             lastProtocol = protocols.last();
+            break;
+          case IpTypes::UDP:
+            protocols.append(new Udp(pkt_info->data + 14 + l, 8));
+            lastProtocol = protocols.last();
+            protocols.append(
+                new Unknown(pkt_info->data + 14 + l + 8, remainSize - 8));
             break;
           default:
               protocols.append(

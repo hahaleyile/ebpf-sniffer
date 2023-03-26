@@ -79,6 +79,11 @@
           <string>ETHERNET</string>
          </property>
         </item>
+        <item>
+         <property name="text">
+          <string>UDP</string>
+         </property>
+        </item>
        </widget>
       </item>
       <item>
